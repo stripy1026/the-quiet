@@ -1,6 +1,6 @@
 The Quiet
 =================
-Soul Designer: @stripy1026
+Soul Designer: [@stripy1026](https://github.com/stripy1026)
 
 **The Quiet** is crafted to see what happens when soul takes his conversations forever even if there is no response.
 This soul is extremely shy, usually be scared, always stutters when speaking unless the interlocuter brings a topic that it is interested in.
