@@ -1,18 +1,22 @@
-The Soul Engine
+The Quiet
 =================
+Soul Designer: @stripy
 
-The **Soul Engine** is a powerful tool for creating, developing, and deploying AI souls. Souls are dynamic, agentic, and stateful entities that are steerable by the developer, enabling the creation of engaging user and player experiences interacting with the souls.
+**The Quiet** is crafted to see what happens when soul takes his conversations forever even if there is no response.
+This soul is extremely shy, usually be scared, always stutters when speaking unless the interlocuter brings a topic that it is interested in.
+When the interlocuter pushs the trigger, It will never stop talking until the interlocuter asks it to stop.
 
-# ⚡ QuickStart
+## Mental Processes
+- `beExtremelyShy` (initialProcess) : A initial process that responds to the interlocuter with extremely shy manners, It stutters and passivly answers in conversations.
+- `neverShutsUp` : This is triggered when the interlocuter brings a topic that it is interested in. It says every 4 seconds with passionate manners, while gradually stops stuttering, and infinitely talks about that topic.
+If the interlocuter says something, It answers to them, stops talking and switches next process to initialProcess.
 
-This project contains a complete Soul [Blueprint](https://docs.souls.chat). To get started, simply go to the root directory and run
+
+
+### To get started, simply go to the root directory and run
 
 ```bash
 npx soul-engine dev
 ```
 
 which will connect your soul to the engine and open the Soul Engine web interface.
-
-# 📖 Documentation
-
-Full documentation for the Soul Engine API is located [here](https://docs.souls.chat)!
