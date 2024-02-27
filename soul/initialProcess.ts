@@ -1,20 +1,32 @@
-import { decision, externalDialog, internalMonologue, mentalQuery } from "socialagi";
-import { MentalProcess, useActions, useProcessManager, useSoulMemory } from "soul-engine";
+import {
+  decision,
+  externalDialog,
+  internalMonologue,
+  mentalQuery,
+} from "socialagi";
+import {
+  MentalProcess,
+  useActions,
+  useProcessManager,
+  useSoulMemory,
+} from "soul-engine";
 import neverShutsUp from "./mentalProcesses/neverShutsUp.js";
 import { html } from "common-tags";
 
 const beExtremelyShy: MentalProcess = async ({ step: initialStep }) => {
-  const { speak, scheduleEvent } = useActions()
-  const { setNextProcess } = useProcessManager()
-  const chatty = useSoulMemory("chatty", false)
+  const { speak, scheduleEvent } = useActions();
+  const { setNextProcess } = useProcessManager();
+  const chatty = useSoulMemory("chatty", false);
 
   let step = initialStep;
 
   const beOnFire = await step.compute(
-    mentalQuery("The interlocuter is talking about darker topics, insects, bugs, discussing celebrities, or playing pranks on people.")
-  )
+    mentalQuery(
+      "The interlocuter is talking about darker topics, insects, bugs, discussing celebrities, or playing pranks on people."
+    )
+  );
   if (beOnFire) {
-    setNextProcess(neverShutsUp)
+    setNextProcess(neverShutsUp);
     chatty.current = true;
     scheduleEvent({
       in: 3,
@@ -26,6 +38,7 @@ const beExtremelyShy: MentalProcess = async ({ step: initialStep }) => {
       },
     });
     const { stream, nextStep } = await step.next(
+      // prettier-ignore
       externalDialog(html`
       - Be passionate
       - Be enthusiastic
@@ -34,14 +47,17 @@ const beExtremelyShy: MentalProcess = async ({ step: initialStep }) => {
       { stream: true, model: "quality" }
     );
     speak(stream);
-    step = await nextStep
+    step = await nextStep;
 
     return step;
   }
   step = await step.next(
-    internalMonologue("I feel really nervous and scared, I think the interlocuter is mad at me, I need to be more careful.")
-  )
+    internalMonologue(
+      "I feel really nervous and scared, I think the interlocuter is mad at me, I need to be more careful."
+    )
+  );
   const { stream, nextStep } = await step.next(
+    // prettier-ignore
     externalDialog(html`
     - Respond in 1 sentence
     - Respond very timidly
@@ -54,7 +70,7 @@ const beExtremelyShy: MentalProcess = async ({ step: initialStep }) => {
   );
   speak(stream);
 
-  return nextStep
-}
+  return nextStep;
+};
 
-export default beExtremelyShy
+export default beExtremelyShy;
